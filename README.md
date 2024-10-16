@@ -21,10 +21,7 @@ Add this package to your project by including the following in your `pubspec.yam
 
 ```yaml
 dependencies:
-  flutter_loading_overlay:
-    git:
-      url: https://github.com/your-repo/flutter_loading_overlay.git
-      ref: main
+  flutter_loading_overlay: ^latest
 ```
 
 Then, run:
@@ -245,10 +242,13 @@ Contributions are always welcome! If you have suggestions, bug fixes, or feature
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
+## Author
+
+Developed by [M.Bilal MurtaZa](https://github.com/MBilalMurtaZa)
+
 ---
 
 *With `FlutterLoadingOverlay`, you can forget about managing context or handling complex custom loading designs. Simply call `startLoading` and `stopLoading`, with no parentheses—just clean, efficient code.* 🚀
 
 ---
 
-This version of the `README.md` highlights the simplicity of using global getters without parentheses and gives all the necessary details about how to use the package!
