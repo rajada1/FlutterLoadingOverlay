@@ -8,7 +8,8 @@ abstract class FlutterLoadingOverlayPlatform extends PlatformInterface {
 
   static final Object _token = Object();
 
-  static FlutterLoadingOverlayPlatform _instance = MethodChannelFlutterLoadingOverlay();
+  static FlutterLoadingOverlayPlatform _instance =
+      MethodChannelFlutterLoadingOverlay();
 
   /// The default instance of [FlutterLoadingOverlayPlatform] to use.
   ///

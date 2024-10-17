@@ -1,4 +1,4 @@
-library flutter_loading_overlay;
+library;
 
 import 'dart:io';
 
@@ -7,11 +7,12 @@ import 'package:flutter/material.dart';
 import 'flutter_loading_overlay_platform_interface.dart';
 
 class FlutterLoadingOverlay {
-
   Future<String?> getPlatformVersion() {
     return FlutterLoadingOverlayPlatform.instance.getPlatformVersion();
   }
-  static final FlutterLoadingOverlay _singleton = FlutterLoadingOverlay._internal();
+
+  static final FlutterLoadingOverlay _singleton =
+      FlutterLoadingOverlay._internal();
 
   factory FlutterLoadingOverlay() {
     return _singleton;
@@ -26,14 +27,12 @@ class FlutterLoadingOverlay {
   Color _overlayColor = Colors.black;
   Color? _color;
 
-  
   void init({
     required GlobalKey<NavigatorState> navigatorKey,
-    Widget? customChild, 
-    double opacity = 0.5, 
+    Widget? customChild,
+    double opacity = 0.5,
     Color overlayColor = Colors.black,
     Color? color,
-
   }) {
     _navigatorKey = navigatorKey;
     _customChild = customChild;
@@ -42,12 +41,10 @@ class FlutterLoadingOverlay {
     _color = color;
   }
 
-  
   OverlayEntry _createOverlayEntry() {
     return OverlayEntry(
       builder: (context) => Stack(
         children: [
-          
           Opacity(
             opacity: _opacity,
             child: ModalBarrier(
@@ -55,38 +52,35 @@ class FlutterLoadingOverlay {
               dismissible: false,
             ),
           ),
-          
           Center(
-            child: _customChild ?? (Platform.isIOS?
-            CupertinoActivityIndicator(
-              color: _color,)
-                :
-            CircularProgressIndicator(
-              color: _color,
-            )),
+            child: _customChild ??
+                (Platform.isIOS
+                    ? CupertinoActivityIndicator(
+                        color: _color,
+                      )
+                    : CircularProgressIndicator(
+                        color: _color,
+                      )),
           ),
         ],
       ),
     );
   }
 
-  
   void startLoading() {
     if (_overlayEntry != null) {
-      return; 
+      return;
     }
 
     _overlayEntry = _createOverlayEntry();
     _navigatorKey?.currentState?.overlay?.insert(_overlayEntry!);
   }
 
-  
   void stopLoading() {
     _overlayEntry?.remove();
     _overlayEntry = null;
   }
 }
-
 
 get startLoading => FlutterLoadingOverlay().startLoading();
 get stopLoading => FlutterLoadingOverlay().stopLoading();

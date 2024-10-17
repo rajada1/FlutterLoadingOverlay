@@ -7,13 +7,13 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 class MockFlutterLoadingOverlayPlatform
     with MockPlatformInterfaceMixin
     implements FlutterLoadingOverlayPlatform {
-
   @override
   Future<String?> getPlatformVersion() => Future.value('42');
 }
 
 void main() {
-  final FlutterLoadingOverlayPlatform initialPlatform = FlutterLoadingOverlayPlatform.instance;
+  final FlutterLoadingOverlayPlatform initialPlatform =
+      FlutterLoadingOverlayPlatform.instance;
 
   test('$MethodChannelFlutterLoadingOverlay is the default instance', () {
     expect(initialPlatform, isInstanceOf<MethodChannelFlutterLoadingOverlay>());
@@ -21,7 +21,8 @@ void main() {
 
   test('getPlatformVersion', () async {
     FlutterLoadingOverlay flutterLoadingOverlayPlugin = FlutterLoadingOverlay();
-    MockFlutterLoadingOverlayPlatform fakePlatform = MockFlutterLoadingOverlayPlatform();
+    MockFlutterLoadingOverlayPlatform fakePlatform =
+        MockFlutterLoadingOverlayPlatform();
     FlutterLoadingOverlayPlatform.instance = fakePlatform;
 
     expect(await flutterLoadingOverlayPlugin.getPlatformVersion(), '42');
